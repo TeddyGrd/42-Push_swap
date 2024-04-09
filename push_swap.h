@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/08 10:06:28 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:25:47 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct Stack {
 } Stack;
 
 
-int check_error(int argc, char *argv[]);
+int	check_error(int argc, char *argv[]);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:10:16 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/08 15:43:52 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:52:01 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,36 @@ void ss(Stack* stack_a, Stack* stack_b) {
     sb(stack_b);
 }
 
-void pa(Stack* stack, int data) {
+void pushdata(Stack* stack, int data) {
     StackNode* newNode = (StackNode*)malloc(sizeof(StackNode));
     newNode->data = data;
     newNode->next = stack->top;
     stack->top = newNode;
 }
 
-void pb(Stack* stack_a, Stack* stack_b) {
-    if (stack_a->top == NULL || stack_a->top->next == NULL) {
-        return;
-    }
-    StackNode* last_a = stack_a->top;
-    StackNode* last_b = stack_b->top;
-    while (last_a->next != NULL) {
-        last_a = last_a->next;
-    }
-    last_a->next = stack_b->top;
-    stack_b->top = stack_a->top->next;
-    last_a->next->next = NULL;
-}
+// void pa(Stack* stack_a, Stack* stack_b) {
+// 	int *data;
+//     if (stack_b->top == NULL || stack_b->top->next == NULL) {
+//         return;
+//     }
+// 	StackNode* newNode = (StackNode*)malloc(sizeof(StackNode));
+//     data = stack_a->top;
+// 	newNode->data = data;
+// 	newNode->next = stack_a->top;
+//     stack_b->top = newNode;
+// }
+
+// void pb(Stack* stack_a, Stack* stack_b) {
+// 	int *data;
+//     if (stack_a->top == NULL || stack_a->top->next == NULL) {
+//         return;
+//     }
+// 	StackNode* newNode = (StackNode*)malloc(sizeof(StackNode));
+//     data = stack_a->top;
+// 	newNode->data = data;
+// 	newNode->next = stack_a->top;
+//     stack_b->top = newNode;
+// }
 
 void ra(Stack* stack) {
     if (stack->top == NULL || stack->top->next == NULL) {
@@ -153,17 +163,30 @@ void printStack(Stack* stack) {
     printf("\n");
 }
 
-
-int main() {
+int main(int argc,char *argv[]) {
     Stack* stack_a = createStack();
-    // Stack* stack_b = createStack();
-    stack_a = ;
+    Stack* stack_b = createStack();
+	int i;
 
+	i = 1;
+	if(check_error(argc, argv) == 1)
+		return (1);
+	while (i < argc)
+	{
+		pushdata(stack_a,(ft_atoi((argv[i]))));
+		i++;
+	}
+	printf(" \n b \n");
+    printStack(stack_b);
+	printf("\n a \n");
     printStack(stack_a);
-    rra(stack_a);
-    rrb(stack_a);
+    // ra(stack_a);
+    // ra(stack_a);
+	printf("\n b \n");
+    printStack(stack_b);
+	printf(" \n a \n");
     printStack(stack_a);
-    printf("La pile a est triée.\n");
+    printf("fin des instruction \n");
 
     // Libérer la mémoire
     // ...
