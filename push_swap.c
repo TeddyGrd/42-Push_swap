@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:10:16 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/09 15:52:01 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:23:03 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,27 @@ void pushdata(Stack* stack, int data) {
     stack->top = newNode;
 }
 
-// void pa(Stack* stack_a, Stack* stack_b) {
-// 	int *data;
-//     if (stack_b->top == NULL || stack_b->top->next == NULL) {
-//         return;
-//     }
-// 	StackNode* newNode = (StackNode*)malloc(sizeof(StackNode));
-//     data = stack_a->top;
-// 	newNode->data = data;
-// 	newNode->next = stack_a->top;
-//     stack_b->top = newNode;
-// }
+int pop(Stack* stack) {
+    if (stack->top == NULL) {
+        printf("La pile est vide\n");
+        return -1; // Valeur arbitraire pour indiquer une erreur
+    }
+    int data = stack->top->data;
+    StackNode* temp = stack->top;
+    stack->top = stack->top->next;
+    free(temp);
+    return data;
+}
+
+void pa(Stack* stack_a, Stack* stack_b) {
+    if (stack_b == NULL || stack_b->top == NULL) {
+        printf("La pile b est vide. Impossible d'effectuer l'opération.\n");
+        return;
+    }
+    int data = pop(stack_b);
+    pushdata(stack_a, data);
+    printf("Opération pa (push a) effectuée : %d a été déplacé de b à a.\n", data);
+}
 
 // void pb(Stack* stack_a, Stack* stack_b) {
 // 	int *data;
@@ -169,8 +179,8 @@ int main(int argc,char *argv[]) {
 	int i;
 
 	i = 1;
-	if(check_error(argc, argv) == 1)
-		return (1);
+	// if(check_error(argc, argv) == 1)
+	// 	return (1);
 	while (i < argc)
 	{
 		pushdata(stack_a,(ft_atoi((argv[i]))));
@@ -181,7 +191,7 @@ int main(int argc,char *argv[]) {
 	printf("\n a \n");
     printStack(stack_a);
     // ra(stack_a);
-    // ra(stack_a);
+    pa(stack_b,stack_a);
 	printf("\n b \n");
     printStack(stack_b);
 	printf(" \n a \n");
