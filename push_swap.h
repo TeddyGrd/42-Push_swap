@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 13:29:41 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:39:53 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct Stack
 	t_StackNode	*top;
 }	t_Stack;
 
-t_Stack	*createStack(void);
+t_Stack	*createstack(void);
 int		check_error(int argc, char *argv[]);
 void	ra(t_Stack *stack_a);
 void	rb(t_Stack *stack_b);

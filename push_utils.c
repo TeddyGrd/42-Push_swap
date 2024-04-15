@@ -6,13 +6,13 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:26:02 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 13:42:58 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:39:46 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_Stack	*createStack(void)
+t_Stack	*createstack(void)
 {
 	t_Stack	*stack;
 

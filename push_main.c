@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:28:08 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 13:41:35 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:40:05 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(int argc, char *argv[])
 	int		i;
 
 	i = 1;
-	if(check_error(argc, argv) == 1)
+	if (check_error(argc, argv) == 1)
 		return (1);
-	stack_a = createStack();
-	stack_b = createStack();
+	stack_a = createstack();
+	stack_b = createstack();
 	while (i < argc)
 	{
 		pushdata(stack_a, (ft_atoi((argv[i]))));
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 	ft_printf("\n a \n");
 	printstack(stack_a);
 	pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
+	pb(stack_b, stack_a);
 	ft_printf("\n b \n");
 	printstack(stack_b);
 	ft_printf(" \n a \n");
