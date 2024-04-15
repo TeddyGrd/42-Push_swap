@@ -6,7 +6,7 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 10:51:41 by tguerran          #+#    #+#              #
-#    Updated: 2024/03/14 16:01:22 by tguerran         ###   ########.fr        #
+#    Updated: 2024/04/16 00:35:29 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = ft_atoi.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
 		ft_strncmp.c \
+		ft_strcmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
 		ft_tolower.c \
