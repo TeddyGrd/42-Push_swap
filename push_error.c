@@ -6,24 +6,42 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:30:24 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 16:11:26 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/16 00:40:02 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int double_error(int argc, char *argv[], int i)
-// {
-	
-// }
-
-int	limit_error(int x)
+int	double_error(char *argv[], int y)
 {
-	ft_printf("%d", x);
-	if (x > INT_MAX || x < INT_MIN)
-		return (1);
-	return (0);
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < y)
+	{
+		j = 0;
+		while (argv[i][j] != '\0' && argv[y][j] != '\0')
+		{
+			if (argv[i][j] != argv[y][j])
+				break ;
+			j++;
+		}
+		if (argv[i][j] == '\0' && argv[y][j] == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
 }
+
+// int	limit_error(int x, char str)
+// {
+// 	ft_printf("%d", x);
+// 	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0) {
+//             return (1); // Dépassement de INT_MAX
+//         }
+// 	return (0);
+// }
 
 int	number_error(int argc, char *argv[], int i)
 {
@@ -43,7 +61,7 @@ int	number_error(int argc, char *argv[], int i)
 				return (0);
 			str++;
 		}
-		if (limit_error(x) == 1)
+		if (limit_error(x, *str) == 1)
 			return (0);
 	}
 	return (1);
@@ -56,8 +74,8 @@ int	check_error(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		if (number_error(argc, argv, i) == 0) 
-			// && double_error(argc, argv, i) == 1)
+		if (number_error(argc, argv, i) == 0
+			|| double_error(argv, i) == 0)
 		{
 			ft_printf("Error \n");
 			return (1);
