@@ -6,7 +6,7 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:12:00 by tguerran          #+#    #+#              #
-#    Updated: 2024/03/21 15:49:24 by tguerran         ###   ########.fr        #
+#    Updated: 2024/04/15 13:28:36 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,12 @@ NAME = Push_swap
 CFLAGS = -Wall -Werror -Wextra 
 
 SRC = push_swap.c \
-		error.c \
+		push_push.c \
+		push_reverse.c \
+		push_rotate.c \
+		push_error.c \
+		push_utils.c \
+		push_main.c
 
 OFILES = $(SRC:.c=.o)
 
