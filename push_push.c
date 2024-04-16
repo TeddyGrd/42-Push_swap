@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:14:31 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 14:48:07 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/16 23:41:45 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 void	pushdata(t_Stack *stack, int data)
 {
 	t_StackNode	*newnode;
+	t_StackNode	*current;
 
 	newnode = (t_StackNode *)malloc(sizeof(t_StackNode));
 	newnode->data = data;
-	newnode->next = stack->top;
-	stack->top = newnode;
+	newnode->next = NULL;
+	if (stack->top == NULL)
+		stack->top = newnode;
+	else
+	{
+		current = stack->top;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = newnode;
+	}
 }
 
 void	pa(t_Stack *stack_a, t_Stack *stack_b)
