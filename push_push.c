@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:14:31 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/16 23:41:45 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:37:09 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	pa(t_Stack *stack_a, t_Stack *stack_b)
 		return ;
 	data = pop(stack_b);
 	pushdata(stack_a, data);
+	ft_printf("pa\n");
 }
 
 void	pb(t_Stack *stack_b, t_Stack *stack_a)
@@ -49,4 +50,5 @@ void	pb(t_Stack *stack_b, t_Stack *stack_a)
 		return ;
 	data = pop(stack_a);
 	pushdata(stack_b, data);
+	ft_printf("pb\n");
 }
