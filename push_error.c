@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:30:24 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/16 00:40:02 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/04/16 23:48:56 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	double_error(char *argv[], int y)
 	return (1);
 }
 
-// int	limit_error(int x, char str)
-// {
-// 	ft_printf("%d", x);
-// 	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0) {
-//             return (1); // Dépassement de INT_MAX
-//         }
-// 	return (0);
-// }
+int	limit_error(int x, char str)
+{
+	ft_printf("%d", x);
+	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0) {
+            return (1);
+        }
+	return (0);
+}
 
 int	number_error(int argc, char *argv[], int i)
 {
