@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/19 15:14:23 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:52:06 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	rrr(t_Stack *stack_a, t_Stack *stack_b);
 void	pa(t_Stack *stack_a, t_Stack *stack_b);
 void	pb(t_Stack *stack_b, t_Stack *stack_a);
 void	pushdata(t_Stack *stack, int data);
+int		stack_size(t_Stack *stack);
 int		pop(t_Stack *stack);
 void	printstack(t_Stack *stack);
 int		main(int argc, char *argv[]);

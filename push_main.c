@@ -6,53 +6,75 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:28:08 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/19 16:25:05 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:36:21 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int isEmpty(t_Stack* stack) {
-    // Vérifier si le sommet de la pile est NULL, ce qui signifie que la pile est vide
-    return stack->top == NULL;
+int get_max_bits(t_Stack *stack) {
+    t_StackNode *current = stack->top;
+    int max_value = 0;
+    while (current) {
+        if (current->data > max_value) {
+            max_value = current->data;
+        }
+        current = current->next;
+    }
+    int bits = 0;
+    while ((max_value >> bits) != 0) {
+        bits++;
+    }
+    return bits;
 }
 
-// Algorithme de tri
-// Algorithme de tri
-void simpleSort(t_Stack* stack_a, t_Stack* stack_b) {
-    while (!isEmpty(stack_a)) {
-        int min = INT_MAX;
-        t_StackNode* current = stack_a->top;
-        t_StackNode* min_node = NULL;
-        // Trouver le plus petit élément dans la pile A
-        while (current != NULL) {
-            if (current->data < min) {
-                min = current->data;
-                min_node = current;
-            }
-            current = current->next;
-        }
-        // Déplacer le nœud contenant le plus petit élément vers le sommet de la pile A
-        if (min_node != NULL) {
-            while (stack_a->top != min_node) {
-                ra(stack_a);
-                // Si le nœud est au bas de la pile A, faire une rotation inverse pour le ramener au sommet
-                if (stack_a->top == min_node) {
-                    rra(stack_a);
-                }
-            }
-            // Déplacer le nœud contenant le plus petit élément vers la pile B
-            pb(stack_a, stack_b);
-        }
+int stack_size(t_Stack *stack) {
+    int size = 0;
+    t_StackNode *current = stack->top;
+    while (current) {
+        size++;
+        current = current->next;
     }
-    // Déplacer les éléments de la pile B vers la pile A (triée)
-    while (!isEmpty(stack_b)) {
-        pa(stack_a, stack_b);
+    return size;
+}
+
+void radix_sort(t_Stack *a, t_Stack *b) {
+    int max_bits = get_max_bits(a);
+    int i = 0;
+    
+    while (i < max_bits) {
+        int size = stack_size(a);
+        int j = 0;
+        
+        while (j < size) {
+            int num = a->top->data;
+            if ((num >> i) & 1) {
+                ra(a);
+            } else {
+                pb(a, b);
+            }
+            j++;
+        }
+        while (b->top) {
+            pa(a, b);
+        }  
+        i++;
     }
 }
 
-
-
+int is_sorted(t_Stack *stack) {
+    if (!stack->top) {
+        return 1; // Une pile vide est considérée comme triée
+    }
+    t_StackNode *current = stack->top;
+    while (current->next != NULL) {
+        if (current->data > current->next->data) {
+            return 0; // La pile n'est pas triée
+        }
+        current = current->next;
+    }
+    return 1; // La pile est triée
+}
 
 int	main(int argc, char *argv[])
 {
@@ -70,10 +92,16 @@ int	main(int argc, char *argv[])
 		pushdata(stack_a, (ft_atoi((argv[i]))));
 		i++;
 	}
- printstack(stack_a);
+	printstack(stack_a);
 
-    simpleSort(stack_a, stack_b);
-    ft_printf("\nPile triee:\n");
+    radix_sort(stack_a, stack_b);
+	ft_printf("\nPile triee:\n");
     printstack(stack_a);
+	if (is_sorted(stack_a)) {
+        printf("La pile est triée.\n");
+    } else {
+        printf("La pile n'est pas triée.\n");
+    }
+
 	return (0);
 }
