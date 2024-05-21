@@ -6,7 +6,7 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:12:00 by tguerran          #+#    #+#              #
-#    Updated: 2024/04/15 13:28:36 by tguerran         ###   ########.fr        #
+#    Updated: 2024/05/22 01:45:36 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC = push_swap.c \
 		push_rotate.c \
 		push_error.c \
 		push_utils.c \
-		push_main.c
+		push_main.c \
+		push_algo.c \
+		push_tiny.c 
 
 OFILES = $(SRC:.c=.o)
 

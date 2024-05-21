@@ -6,16 +6,16 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:14:31 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/19 15:37:09 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/22 01:34:41 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pushdata(t_Stack *stack, int data)
+void pushdata(t_Stack *stack, int data)
 {
-	t_StackNode	*newnode;
-	t_StackNode	*current;
+	t_StackNode *newnode;
+	t_StackNode *current;
 
 	newnode = (t_StackNode *)malloc(sizeof(t_StackNode));
 	newnode->data = data;
@@ -31,23 +31,23 @@ void	pushdata(t_Stack *stack, int data)
 	}
 }
 
-void	pa(t_Stack *stack_a, t_Stack *stack_b)
+void pa(t_Stack *stack_a, t_Stack *stack_b)
 {
-	int	data;
+	int data;
 
 	if (stack_b == NULL || stack_b->top == NULL)
-		return ;
+		return;
 	data = pop(stack_b);
 	pushdata(stack_a, data);
 	ft_printf("pa\n");
 }
 
-void	pb(t_Stack *stack_b, t_Stack *stack_a)
+void pb(t_Stack *stack_b, t_Stack *stack_a)
 {
-	int	data;
+	int data;
 
 	if (stack_a == NULL || stack_a->top == NULL)
-		return ;
+		return;
 	data = pop(stack_a);
 	pushdata(stack_b, data);
 	ft_printf("pb\n");

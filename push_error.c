@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int	double_error(char *argv[], int y)
+int double_error(char *argv[], int y)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 1;
 	while (i < y)
@@ -24,7 +24,7 @@ int	double_error(char *argv[], int y)
 		while (argv[i][j] != '\0' && argv[y][j] != '\0')
 		{
 			if (argv[i][j] != argv[y][j])
-				break ;
+				break;
 			j++;
 		}
 		if (argv[i][j] == '\0' && argv[y][j] == '\0')
@@ -34,19 +34,19 @@ int	double_error(char *argv[], int y)
 	return (1);
 }
 
-int	limit_error(int x, char str)
+int limit_error(int x, char str)
 {
-	ft_printf("%d", x);
-	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0) {
-            return (1);
-        }
+	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0)
+	{
+		return (1);
+	}
 	return (0);
 }
 
-int	number_error(int argc, char *argv[], int i)
+int number_error(int argc, char *argv[], int i)
 {
-	char	*str;
-	int		x;
+	char *str;
+	int x;
 
 	str = argv[i];
 	if (argc >= 1)
@@ -67,15 +67,14 @@ int	number_error(int argc, char *argv[], int i)
 	return (1);
 }
 
-int	check_error(int argc, char *argv[])
+int check_error(int argc, char *argv[])
 {
-	int		i;
+	int i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (number_error(argc, argv, i) == 0
-			|| double_error(argv, i) == 0)
+		if (number_error(argc, argv, i) == 0 || double_error(argv, i) == 0)
 		{
 			ft_printf("Error \n");
 			return (1);

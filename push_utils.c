@@ -6,25 +6,25 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:26:02 by tguerran          #+#    #+#             */
-/*   Updated: 2024/04/15 14:39:46 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/22 01:52:43 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_Stack	*createstack(void)
+t_Stack *createstack(void)
 {
-	t_Stack	*stack;
+	t_Stack *stack;
 
 	stack = (t_Stack *)malloc(sizeof(t_Stack));
 	stack->top = NULL;
 	return (stack);
 }
 
-int	pop(t_Stack *stack)
+int pop(t_Stack *stack)
 {
-	int			data;
-	t_StackNode	*temp;
+	int data;
+	t_StackNode *temp;
 
 	if (stack->top == NULL)
 	{
@@ -38,14 +38,14 @@ int	pop(t_Stack *stack)
 	return (data);
 }
 
-void	printstack(t_Stack *stack)
+void printstack(t_Stack *stack)
 {
-	t_StackNode	*current;
+	t_StackNode *current;
 
 	if (stack == NULL || stack->top == NULL)
 	{
 		ft_printf("La pile est vide.\n");
-		return ;
+		return;
 	}
 	ft_printf("Contenu de la pile : ");
 	current = stack->top;
@@ -55,4 +55,16 @@ void	printstack(t_Stack *stack)
 		current = current->next;
 	}
 	ft_printf("\n");
+}
+
+int get_stack_size(t_Stack *stack)
+{
+	int size = 0;
+	t_StackNode *current = stack->top;
+	while (current != NULL)
+	{
+		size++;
+		current = current->next;
+	}
+	return size;
 }
