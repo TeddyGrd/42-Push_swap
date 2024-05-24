@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/22 01:53:46 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/24 22:42:59 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int main(int argc, char *argv[]);
 int is_sorted(t_Stack *stack);
 void tiny_sort(t_Stack **stack);
 int get_stack_size(t_Stack *stack);
+void radix_sort(t_Stack *a, t_Stack *b);
 
 #endif
