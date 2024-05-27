@@ -6,7 +6,7 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:12:00 by tguerran          #+#    #+#              #
-#    Updated: 2024/05/27 01:30:26 by tguerran         ###   ########.fr        #
+#    Updated: 2024/05/28 00:53:53 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,11 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@make -C Libft
-	cc $(CFLAGS) $(OFILES) Libft/libft.a
-	
+	@if [ ! -z "$$(ar -t Libft/libft.a | grep libft.a)" ]; then \
+		cc $(CFLAGS) $(OFILES) Libft/libft.a; \
+	else \
+		cc $(CFLAGS) $(OFILES) -L Libft -lft; \
+	fi	
 clean:
 	@make clean -C Libft
 	rm -f $(OFILES)
