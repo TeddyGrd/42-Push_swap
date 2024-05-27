@@ -1,42 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_cost.c                                        :+:      :+:    :+:   */
+/*   push_tiny.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 17:41:01 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/05/22 01:41:19 by tguerran         ###   ########.fr       */
+/*   Created: 2024/04/25 17:41:01 by tguerran          #+#    #+#             */
+/*   Updated: 2024/05/27 01:15:47 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_highest_value(t_Stack *stack)
+void tiny_sort(t_stack *stack)
 {
-	int highest = stack->top->data;
-	t_StackNode *current = stack->top;
-	while (current)
-	{
-		if (current->data > highest)
-			highest = current->data;
-		current = current->next;
-	}
-	return highest;
+	t_stacks *max_node;
+
+	max_node = find_higest(stack->head_a);
+	if (stack->head_a == max_node)
+		ra(stack);
+	else if (stack->head_a->next == max_node)
+		rra(stack);
+	if (stack->head_a->data > stack->head_a->next->data)
+		sa(stack);
 }
 
-void tiny_sort(t_Stack **stack)
+void four_sort(t_stack *stack)
 {
-	if (is_sorted(*stack))
-		return;
+	int index;
 
-	int highest = find_highest_value(*stack);
+	index = find_min_index(stack->head_a);
+	while (index != 0)
+	{
+		if (index < stack->a_size / 2)
+			ra(stack);
+		else
+			rra(stack);
+		index = find_min_index(stack->head_a);
+	}
+	pb(stack);
+	tiny_sort(stack);
+	pa(stack);
+}
 
-	if ((*stack)->top->data == highest)
-		ra(stack);
-	else if ((*stack)->top->next->data == highest)
-		rra(stack);
+void five_sort(t_stack *stack)
+{
+	int index;
 
-	if ((*stack)->top->data > (*stack)->top->next->data)
-		sa(*stack);
+	index = find_min_index(stack->head_a);
+	while (index != 0)
+	{
+		if (index <= stack->a_size / 2)
+			ra(stack);
+		else
+			rra(stack);
+		index = find_min_index(stack->head_a);
+	}
+	pb(stack);
+	four_sort(stack);
+	pa(stack);
 }

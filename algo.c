@@ -6,67 +6,70 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 18:55:58 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/24 22:48:06 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:36:57 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_max_bits(t_Stack *stack)
+int find_max_bits(int num)
 {
-    int max = 0;
-    t_StackNode *node = stack->top;
-    while (node)
+    int counter;
+
+    counter = 0;
+    while (num)
     {
-        if (node->data > max)
-        {
-            max = node->data;
-        }
-        node = node->next;
+        counter++;
+        num = num / 2;
     }
-    int bits = 0;
-    while (max != 0)
-    {
-        max /= 2;
-        bits++;
-    }
-    return bits;
+    return (counter);
 }
 
-// Fonction pour le tri radix
-void radix_sort(t_Stack *a, t_Stack *b)
+void radix_sub_two(t_stack *s, int bit, int b_size, int max_bit)
 {
-    int max_bits = get_max_bits(a);
-    int i = 0;
-
-    while (i < max_bits)
+    while (b_size-- && (bit <= max_bit))
     {
-        int size = 0;
-        t_StackNode *temp = a->top;
-        while (temp)
-        {
-            size++;
-            temp = temp->next;
-        }
+        if (((s->head_b->data >> bit) & 1) == 1)
+            pa(s);
+        else
+            rb(s);
+    }
+}
 
-        int j = 0;
+void radix_sub_one(t_stack *s, int bit)
+{
+    if (!ft_is_sorted(s))
+    {
+        if (((s->head_a->data >> bit) & 1) == 0)
+            pb(s);
+        else
+            ra(s);
+    }
+}
+
+void radix_sort(t_stack *s)
+{
+    int i;
+    int j;
+    int max_bit;
+    int size;
+    int b_size;
+
+    i = 0;
+    max_bit = find_max_bits(s->a_size);
+    while (i <= max_bit)
+    {
+        j = 0;
+        size = s->a_size;
         while (j < size)
         {
-            if (((a->top->data >> i) & 1) == 1)
-            {
-                pb(a, b); // Déplacer vers 'b' si le bit est 1
-            }
-            else
-            {
-                ra(&a); // Sinon, rotation de la pile 'a'
-            }
+            radix_sub_one(s, i);
             j++;
         }
-
-        while (b->top)
-        {
-            pa(a, b); // Remettre les éléments de 'b' dans 'a'
-        }
+        b_size = s->b_size;
         i++;
+        radix_sub_two(s, i, b_size, max_bit);
     }
+    while (s->b_size)
+        pa(s);
 }

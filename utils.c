@@ -1,70 +1,98 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:26:02 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/22 01:52:43 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/27 01:29:24 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_Stack *createstack(void)
+int ft_is_sorted(t_stack *s)
 {
-	t_Stack *stack;
+	t_stacks *temp;
 
-	stack = (t_Stack *)malloc(sizeof(t_Stack));
-	stack->top = NULL;
-	return (stack);
-}
-
-int pop(t_Stack *stack)
-{
-	int data;
-	t_StackNode *temp;
-
-	if (stack->top == NULL)
+	if (s->a_size <= 1)
+		return (1);
+	temp = s->head_a;
+	while (temp->next != s->head_a)
 	{
-		ft_printf("La pile est vide\n");
-		return (-1);
+		if (temp->data > temp->next->data)
+			return (0);
+		temp = temp->next;
 	}
-	data = stack->top->data;
-	temp = stack->top;
-	stack->top = stack->top->next;
-	free(temp);
-	return (data);
+	return (1);
 }
 
-void printstack(t_Stack *stack)
+void ft_push_back(t_stack *sa, char *number)
 {
-	t_StackNode *current;
+	t_stacks *new;
+	t_stacks *last;
 
-	if (stack == NULL || stack->top == NULL)
+	if (!sa->head_a)
 	{
-		ft_printf("La pile est vide.\n");
+		new = (t_stacks *)malloc(sizeof(t_stacks));
+		new->next = new;
+		new->pre = new;
+		new->data = ft_atoi(number);
+		sa->head_a = new;
+		sa->a_size++;
 		return;
 	}
-	ft_printf("Contenu de la pile : ");
-	current = stack->top;
-	while (current != NULL)
-	{
-		ft_printf("%d ", current->data);
-		current = current->next;
-	}
-	ft_printf("\n");
+	new = (t_stacks *)malloc(sizeof(t_stacks));
+	new->data = ft_atoi(number);
+	last = sa->head_a->pre;
+	last->next = new;
+	new->pre = last;
+	new->next = sa->head_a;
+	sa->head_a->pre = new;
+	sa->a_size++;
 }
 
-int get_stack_size(t_Stack *stack)
+t_stacks *find_higest(t_stacks *head)
 {
-	int size = 0;
-	t_StackNode *current = stack->top;
-	while (current != NULL)
+	t_stacks *max;
+	t_stacks *temp;
+
+	max = head;
+	temp = head;
+	while (1)
 	{
-		size++;
-		current = current->next;
+		if (temp->data > max->data)
+			max = temp;
+		temp = temp->next;
+		if (temp == head)
+			break;
 	}
-	return size;
+	return (max);
+}
+
+int find_min_index(t_stacks *s)
+{
+	int min_index;
+	int min_value;
+	int i;
+	t_stacks *temp;
+
+	min_index = -1;
+	min_value = 2147483647;
+	temp = s;
+	i = 0;
+	while (1)
+	{
+		if (min_value > temp->data)
+		{
+			min_value = temp->data;
+			min_index = i;
+		}
+		temp = temp->next;
+		i++;
+		if (temp == s)
+			break;
+	}
+	return (min_index);
 }

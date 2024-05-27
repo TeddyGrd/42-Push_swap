@@ -1,73 +1,113 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_push.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:14:31 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/24 21:53:46 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/27 01:47:31 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void pushdata(t_Stack *stack, int data)
+void delete_head_a(t_stack *sa)
 {
-	t_StackNode *newnode;
-	t_StackNode *current;
+	t_stacks *temp;
 
-	newnode = (t_StackNode *)malloc(sizeof(t_StackNode));
-	newnode->data = data;
-	newnode->next = NULL;
-	if (stack->top == NULL)
-		stack->top = newnode;
+	temp = sa->head_a;
+	if (sa->head_a->next == sa->head_a)
+		sa->head_a = NULL;
 	else
 	{
-		current = stack->top;
-		while (current->next != NULL)
-			current = current->next;
-		current->next = newnode;
+		sa->head_a->pre->next = sa->head_a->next;
+		sa->head_a->next->pre = sa->head_a->pre;
+		sa->head_a = sa->head_a->next;
 	}
+	sa->a_size--;
+	free(temp);
+	ft_printf("pb\n");
 }
 
-void pa(t_Stack *a, t_Stack *b)
+void delete_head_b(t_stack *sa)
 {
-	if (b->top)
+	t_stacks *temp;
+
+	temp = sa->head_b;
+	if (sa->head_b->next == sa->head_b)
+		sa->head_b = NULL;
+	else
 	{
-		pushdata(a, pop(b));
+		sa->head_b->pre->next = sa->head_b->next;
+		sa->head_b->next->pre = sa->head_b->pre;
+		sa->head_b = sa->head_b->next;
 	}
+	sa->b_size--;
+	free(temp);
 	ft_printf("pa\n");
 }
 
-void pb(t_Stack *a, t_Stack *b)
+void pa(t_stack *stack)
 {
-	if (a->top)
+	t_stacks *new;
+
+	if (stack->b_size)
 	{
-		pushdata(b, pop(a));
+		new = (t_stacks *)malloc(sizeof(t_stacks));
+		if (!new)
+		{
+			exit(EXIT_FAILURE);
+		}
+		new->data = stack->head_b->data;
+
+		if (!stack->a_size)
+		{
+			new->next = new;
+			new->pre = new;
+			stack->head_a = new;
+		}
+		else
+		{
+			new->next = stack->head_a;
+			new->pre = stack->head_a->pre;
+			stack->head_a->pre->next = new;
+			stack->head_a->pre = new;
+			stack->head_a = new;
+		}
+		stack->a_size++;
+		delete_head_b(stack);
 	}
-	ft_printf("pb\n");
 }
-/*
-void pa(t_Stack *stack_a, t_Stack *stack_b)
+
+void pb(t_stack *stack)
 {
-	int data;
+	t_stacks *new;
 
-	if (stack_b == NULL || stack_b->top == NULL)
-		return;
-	data = pop(stack_b);
-	pushdata(stack_a, data);
-	ft_printf("pa\n");
+	if (stack->a_size)
+	{
+		new = (t_stacks *)malloc(sizeof(t_stacks));
+		if (!new)
+		{
+			exit(EXIT_FAILURE);
+		}
+		new->data = stack->head_a->data;
+
+		if (!stack->b_size)
+		{
+			new->next = new;
+			new->pre = new;
+			stack->head_b = new;
+		}
+		else
+		{
+			new->next = stack->head_b;
+			new->pre = stack->head_b->pre;
+			stack->head_b->pre->next = new;
+			stack->head_b->pre = new;
+			stack->head_b = new;
+		}
+		stack->b_size++;
+		delete_head_a(stack);
+	}
 }
-
-void pb(t_Stack *stack_b, t_Stack *stack_a)
-{
-	int data;
-
-	if (stack_a == NULL || stack_a->top == NULL)
-		return;
-	data = pop(stack_a);
-	pushdata(stack_b, data);
-	ft_printf("pb\n");
-}
-*/
