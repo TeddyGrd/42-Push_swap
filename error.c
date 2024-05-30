@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:30:24 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/30 18:33:14 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/31 00:55:57 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,49 @@ int	double_error(char *argv[], int y)
 	return (1);
 }
 
-int	limit_error(int x, char str)
+int	is_an_int(const char *av)
 {
-	if (x == INT_MAX && ft_strcmp(&str, "2147483647") != 0)
-	{
+	long long	value;
+	int			len;
+	int			i;
+
+	i = 0;
+	len = ft_strlen(av);
+	if (len > 11)
 		return (1);
+	while (i < len)
+	{
+		if (i == 0 && (av[i] == '-' || av[i] == '+'))
+		{
+			i++;
+			continue ;
+		}
+		if (!ft_isdigit(av[i]))
+			return (1);
+		i++;
 	}
+	value = ft_atoi(av);
+	if (value > INT_MAX || value < INT_MIN)
+		return (1);
 	return (0);
 }
 
-int	number_error(int argc, char *argv[], int i)
+long long	ft_atoi_long(const char *str)
 {
-	char	*str;
-	int		x;
+	return (ft_strtoll(str, NULL));
+}
+
+int	number_error(char *argv[], int i)
+{
+	long long	x;
+	char		*str;
 
 	str = argv[i];
-	if (argc >= 1)
-	{
-		x = 0;
-		x = ft_atoi(str);
-		while (*str)
-		{
-			if (*str == '-')
-				str++;
-			if (!ft_isdigit(*str))
-				return (0);
-			str++;
-		}
-		if (limit_error(x, *str) == 1)
-			return (0);
-	}
+	if (is_an_int(str))
+		return (0);
+	x = ft_strtoll(str, NULL);
+	if (x > INT_MAX || x < INT_MIN)
+		return (0);
 	return (1);
 }
 
@@ -72,11 +85,15 @@ int	check_error(int argc, char *argv[])
 	int	i;
 
 	i = 1;
+	if (argc < 2)
+	{
+		return (1);
+	}
 	while (i < argc)
 	{
-		if (number_error(argc, argv, i) == 0 || double_error(argv, i) == 0)
+		if (number_error(argv, i) == 0 || double_error(argv, i) == 0)
 		{
-			ft_printf("Error \n");
+			ft_printf("Error\n");
 			return (1);
 		}
 		i++;

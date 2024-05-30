@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/30 18:48:49 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/31 00:22:13 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void		ft_free_init(t_stack *s);
 t_stacks	*find_highest(t_stacks *head);
 void		ft_push_back(t_stack *sa, char *number);
 int			find_min_index(t_stacks *s);
+long long	ft_strtoll(const char *nptr, char **endptr);
 
 #endif

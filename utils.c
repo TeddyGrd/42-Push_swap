@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:26:02 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/30 19:18:47 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/31 00:21:53 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,32 @@ int	find_min_index(t_stacks *stack)
 			break ;
 	}
 	return (min_index);
+}
+
+long long	ft_strtoll(const char *nptr, char **endptr)
+{
+	long long	result;
+	int			sign;
+
+	result = 0;
+	sign = 1;
+	while (*nptr == ' ')
+		nptr++;
+	if (*nptr == '-')
+	{
+		sign = -1;
+		nptr++;
+	}
+	else if (*nptr == '+')
+	{
+		nptr++;
+	}
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		result = result * 10 + (*nptr - '0');
+		nptr++;
+	}
+	if (endptr != NULL)
+		*endptr = (char *)nptr;
+	return (result * sign);
 }

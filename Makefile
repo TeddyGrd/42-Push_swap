@@ -6,11 +6,11 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:12:00 by tguerran          #+#    #+#              #
-#    Updated: 2024/05/28 00:53:53 by tguerran         ###   ########.fr        #
+#    Updated: 2024/05/30 22:48:17 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Push_swap
+NAME = push_swap
 
 CFLAGS = -Wall -Werror -Wextra 
 
@@ -33,9 +33,9 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	@make -C Libft
 	@if [ ! -z "$$(ar -t Libft/libft.a | grep libft.a)" ]; then \
-		cc $(CFLAGS) $(OFILES) Libft/libft.a; \
+		cc $(CFLAGS) $(OFILES) Libft/libft.a -o $(NAME); \
 	else \
-		cc $(CFLAGS) $(OFILES) -L Libft -lft; \
+		cc $(CFLAGS) $(OFILES) -L Libft -lft -o $(NAME); \
 	fi	
 clean:
 	@make clean -C Libft
