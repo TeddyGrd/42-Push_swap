@@ -6,17 +6,17 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:41:01 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/27 01:15:47 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:50:59 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void tiny_sort(t_stack *stack)
+void	tiny_sort(t_stack *stack)
 {
-	t_stacks *max_node;
+	t_stacks	*max_node;
 
-	max_node = find_higest(stack->head_a);
+	max_node = find_highest(stack->head_a);
 	if (stack->head_a == max_node)
 		ra(stack);
 	else if (stack->head_a->next == max_node)
@@ -25,9 +25,9 @@ void tiny_sort(t_stack *stack)
 		sa(stack);
 }
 
-void four_sort(t_stack *stack)
+void	four_sort(t_stack *stack)
 {
-	int index;
+	int	index;
 
 	index = find_min_index(stack->head_a);
 	while (index != 0)
@@ -43,9 +43,9 @@ void four_sort(t_stack *stack)
 	pa(stack);
 }
 
-void five_sort(t_stack *stack)
+void	five_sort(t_stack *stack)
 {
-	int index;
+	int	index;
 
 	index = find_min_index(stack->head_a);
 	while (index != 0)

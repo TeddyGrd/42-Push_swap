@@ -6,20 +6,20 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:26:02 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/27 01:29:24 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:18:47 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_is_sorted(t_stack *s)
+int	ft_is_sorted(t_stack *stack)
 {
-	t_stacks *temp;
+	t_stacks	*temp;
 
-	if (s->a_size <= 1)
+	if (stack->a_size <= 1)
 		return (1);
-	temp = s->head_a;
-	while (temp->next != s->head_a)
+	temp = stack->head_a;
+	while (temp->next != stack->head_a)
 	{
 		if (temp->data > temp->next->data)
 			return (0);
@@ -28,10 +28,10 @@ int ft_is_sorted(t_stack *s)
 	return (1);
 }
 
-void ft_push_back(t_stack *sa, char *number)
+void	ft_push_back(t_stack *sa, char *number)
 {
-	t_stacks *new;
-	t_stacks *last;
+	t_stacks	*new;
+	t_stacks	*last;
 
 	if (!sa->head_a)
 	{
@@ -41,7 +41,7 @@ void ft_push_back(t_stack *sa, char *number)
 		new->data = ft_atoi(number);
 		sa->head_a = new;
 		sa->a_size++;
-		return;
+		return ;
 	}
 	new = (t_stacks *)malloc(sizeof(t_stacks));
 	new->data = ft_atoi(number);
@@ -53,10 +53,10 @@ void ft_push_back(t_stack *sa, char *number)
 	sa->a_size++;
 }
 
-t_stacks *find_higest(t_stacks *head)
+t_stacks	*find_highest(t_stacks *head)
 {
-	t_stacks *max;
-	t_stacks *temp;
+	t_stacks	*max;
+	t_stacks	*temp;
 
 	max = head;
 	temp = head;
@@ -66,21 +66,21 @@ t_stacks *find_higest(t_stacks *head)
 			max = temp;
 		temp = temp->next;
 		if (temp == head)
-			break;
+			break ;
 	}
 	return (max);
 }
 
-int find_min_index(t_stacks *s)
+int	find_min_index(t_stacks *stack)
 {
-	int min_index;
-	int min_value;
-	int i;
-	t_stacks *temp;
+	int			min_index;
+	int			min_value;
+	int			i;
+	t_stacks	*temp;
 
 	min_index = -1;
 	min_value = 2147483647;
-	temp = s;
+	temp = stack;
 	i = 0;
 	while (1)
 	{
@@ -91,8 +91,8 @@ int find_min_index(t_stacks *s)
 		}
 		temp = temp->next;
 		i++;
-		if (temp == s)
-			break;
+		if (temp == stack)
+			break ;
 	}
 	return (min_index);
 }

@@ -6,15 +6,15 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:28:08 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/28 00:44:41 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:45:07 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_stack sa;
+	t_stack	sa;
 
 	if (check_error(argc, argv) == 1)
 		return (1);
@@ -28,6 +28,5 @@ int main(int argc, char *argv[])
 	else
 		radix_sort(&sa);
 	ft_free(&sa);
-
 	return (0);
 }

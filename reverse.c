@@ -6,20 +6,20 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:07:06 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/27 01:15:54 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:15:01 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void reverse_rotate(t_stacks **head)
+void	reverse_rotate(t_stacks **head)
 {
 	if (!(*head) || !(*head)->next)
-		return;
+		return ;
 	*head = (*head)->pre;
 }
 
-void rra(t_stack *stack)
+void	rra(t_stack *stack)
 {
 	if (stack->a_size > 0)
 	{
@@ -28,7 +28,7 @@ void rra(t_stack *stack)
 	}
 }
 
-void rrb(t_stack *stack)
+void	rrb(t_stack *stack)
 {
 	if (stack->b_size > 0)
 	{
@@ -37,7 +37,7 @@ void rrb(t_stack *stack)
 	}
 }
 
-void rrr(t_stack *stack)
+void	rrr(t_stack *stack)
 {
 	if (stack->a_size > 0)
 	{
