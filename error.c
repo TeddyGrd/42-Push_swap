@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:30:24 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/31 00:55:57 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/05/31 01:54:21 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,28 @@ int	double_error(char *argv[], int y)
 	return (1);
 }
 
-int	is_an_int(const char *av)
+int	is_an_int(const char *argv)
 {
 	long long	value;
 	int			len;
 	int			i;
 
 	i = 0;
-	len = ft_strlen(av);
+	len = ft_strlen(argv);
 	if (len > 11)
 		return (1);
 	while (i < len)
 	{
-		if (i == 0 && (av[i] == '-' || av[i] == '+'))
+		if (i == 0 && (argv[i] == '-' || argv[i] == '+'))
 		{
 			i++;
 			continue ;
 		}
-		if (!ft_isdigit(av[i]))
+		if (!ft_isdigit(argv[i]))
 			return (1);
 		i++;
 	}
-	value = ft_atoi(av);
+	value = ft_atoi(argv);
 	if (value > INT_MAX || value < INT_MIN)
 		return (1);
 	return (0);
