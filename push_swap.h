@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/31 00:22:13 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:21:29 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdbool.h>
 
 typedef struct s_stacks
 {
@@ -60,5 +59,8 @@ t_stacks	*find_highest(t_stacks *head);
 void		ft_push_back(t_stack *sa, char *number);
 int			find_min_index(t_stacks *s);
 long long	ft_strtoll(const char *nptr, char **endptr);
+char		**parse_arguments(int *argc, char **argv);
+int			f_space(char **argv);
+char		*ft_strcat(char *dest, const char *src);
 
 #endif

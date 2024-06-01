@@ -6,31 +6,11 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 00:56:57 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/31 01:57:15 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:16:17 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_tab_init(int argc, char **argv, int *tab)
-{
-	char	**numbers;
-	int		i;
-	int		j;
-	int		c;
-
-	i = 1;
-	c = 0;
-	while (i < argc)
-	{
-		numbers = ft_split(argv[i], ' ');
-		j = 0;
-		while (numbers[j])
-			tab[c++] = ft_atoi(numbers[j++]);
-		free_split(numbers);
-		i++;
-	}
-}
 
 void	ft_init_sort(t_stack *stack)
 {
@@ -100,25 +80,22 @@ void	ft_init_index(t_stack *stack)
 void	ft_stack_init(t_stack *stack, int argc, char **argv)
 {
 	int		i;
-	int		j;
 	char	**numbers;
 
+	i = 0;
 	stack->a_size = 0;
 	stack->b_size = 0;
 	stack->head_a = NULL;
 	stack->head_b = NULL;
-	i = 1;
+	numbers = parse_arguments(&argc, argv);
 	while (i < argc)
-	{
-		numbers = ft_split(argv[i], ' ');
-		j = 0;
-		while (numbers[j])
-			ft_push_back(stack, numbers[j++]);
-		free_split(numbers);
-		i++;
-	}
+		ft_push_back(stack, numbers[i++]);
+	free_split(numbers);
 	if (ft_is_sorted(stack))
+	{
 		ft_free_init(stack);
+		return ;
+	}
 	ft_init_sorted(stack);
 	ft_init_sort(stack);
 	ft_init_index(stack);

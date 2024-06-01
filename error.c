@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:30:24 by tguerran          #+#    #+#             */
-/*   Updated: 2024/05/31 01:54:21 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:12:44 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	double_error(char *argv[], int y)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (i < y)
 	{
 		j = 0;
@@ -82,21 +82,23 @@ int	number_error(char *argv[], int i)
 
 int	check_error(int argc, char *argv[])
 {
-	int	i;
+	int		i;
+	char	**numbers;
 
-	i = 1;
-	if (argc < 2)
-	{
+	i = 0;
+	if (f_space(argv) == 1)
 		return (1);
-	}
+	numbers = parse_arguments(&argc, argv);
 	while (i < argc)
 	{
-		if (number_error(argv, i) == 0 || double_error(argv, i) == 0)
+		if (number_error(numbers, i) == 0 || double_error(numbers, i) == 0)
 		{
 			ft_printf("Error\n");
+			free_split(numbers);
 			return (1);
 		}
 		i++;
 	}
+	free_split(numbers);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 15:12:00 by tguerran          #+#    #+#              #
-#    Updated: 2024/05/30 22:48:17 by tguerran         ###   ########.fr        #
+#    Updated: 2024/06/01 18:09:59 by tguerran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,14 @@ SRC = swap.c \
 		reverse.c \
 		rotate.c \
 		error.c \
+		error2.c \
 		utils.c \
 		main.c \
 		algo.c \
 		init.c \
 		push_tiny.c \
+		utils2.c \
+		parse.c \
 		free.c
 
 OFILES = $(SRC:.c=.o)
