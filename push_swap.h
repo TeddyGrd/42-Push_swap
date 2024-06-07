@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:24:17 by tguerran          #+#    #+#             */
-/*   Updated: 2024/06/01 18:21:29 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/06/07 14:48:40 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void		tiny_sort(t_stack *stack);
 void		four_sort(t_stack *stack);
 void		five_sort(t_stack *stack);
 void		radix_sort(t_stack *stack);
-void		ft_free(t_stack *stack);
 void		free_split(char **numbers);
 void		ft_free_init(t_stack *s);
 t_stacks	*find_highest(t_stacks *head);

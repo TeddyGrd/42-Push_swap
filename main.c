@@ -6,7 +6,7 @@
 /*   By: tguerran <tguerran@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:28:08 by tguerran          #+#    #+#             */
-/*   Updated: 2024/06/01 18:16:42 by tguerran         ###   ########.fr       */
+/*   Updated: 2024/06/07 14:30:13 by tguerran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(int argc, char *argv[])
 		five_sort(&sa);
 	else
 		radix_sort(&sa);
-	ft_free(&sa);
+	ft_free_init(&sa);
 	return (0);
 }
